@@ -1,7 +1,5 @@
 import os
 import hashlib
-from datetime import datetime
-import pytz
 
 def calculate_hashes(directory):
     hash_file_path = os.path.join(directory, "hash.txt")
@@ -34,13 +32,7 @@ def calculate_hashes(directory):
 
             if files_processed:
                 last_dir = current_dir
-
-        # Add the last update time at the bottom
-        timezone = pytz.timezone("Asia/Hong_Kong")
-        current_time = datetime.now(timezone).strftime("%Y-%m-%d %H:%M:%S")
-        f.write(f"\nLast updated: {current_time} [{timezone}]\n")
-        f.write(f"Verified: pass")
-
+                
     print(f"The hash values have been saved to {hash_file_path}.")
 
 directory = input("Enter the directory to scan: ")
